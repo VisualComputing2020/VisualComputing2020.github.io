@@ -1,2 +1,1 @@
-# VisualComputing
-Visual computing repository
+# visualcomputing2020.github.io

@@ -92,13 +92,6 @@ void draw(){
       imagen.set(i,j,imgMN[i][j]);
     }
   }
-  // Falta volver la matriz un vector y pasarlo al arreglo principal
-  int[] imgC = pgC.pixels;
-  for(int i = 0; i < pgC.width; i++){
-    for(int j = 0; j < pgC.height; j++){
-      imgC[i] = imgMN[i][j];
-    }
-  }
   imagen.updatePixels();
   pgC.updatePixels();
   image(pg,50,50);

@@ -7,7 +7,7 @@ PImage img;
 void setup(){
   size(1200,450);
   //frameRate(10);
-  img = loadImage("BN.jpg");
+  img = loadImage("/assets/img/Unal.jpg");
   pg = createGraphics(img.width,img.height);
   pg.beginDraw();
   pg.image(img,0,0);
@@ -90,6 +90,13 @@ void draw(){
       }      
       imgMN[i][j] = color((int)pixel_colorR, (int)pixel_colorG, (int)pixel_colorB);
       imagen.set(i,j,imgMN[i][j]);
+    }
+  }
+  // Falta volver la matriz un vector y pasarlo al arreglo principal
+  int[] imgC = pgC.pixels;
+  for(int i = 0; i < pgC.width; i++){
+    for(int j = 0; j < pgC.height; j++){
+      imgC[i] = imgMN[i][j];
     }
   }
   imagen.updatePixels();

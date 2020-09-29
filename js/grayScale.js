@@ -10,14 +10,14 @@ function preload() {
 function setup() {
 
   var imagen = createCanvas(imgHTML.width, imgHTML.height);
-  imagen.parent('imagen');
+  imagen.parent('grayScaleContainer');
   img.loadPixels();
 
   // pixelDensity(1) for not scaling pixel density to display density
   // for more information, check the reference of pixelDensity()
   pixelDensity(1);
   noLoop();
-  var a = select("#btnGryScaleFilter");
+  var a = select("#btnGrayScaleFilter");
   a.mousePressed(draw);
 }
 
@@ -27,9 +27,9 @@ function draw() {
   console.log(filter);
 
   switch (filter) {
-    case 'Average':
+    case 'Promedio':
       flag = 0;
-      console.log("Average");
+      console.log("Promedio");
       break;
     case 'Luma':
       flag = 1;
@@ -39,12 +39,8 @@ function draw() {
       console.log("otro");
   }
 
+  print(flag);
 
-
-  // We're only going to process a portion of the image
-  // so let's set the whole image as the background first
-
-  // Calculate the small rectangle we will process
   const xstart = constrain(0, 0, img.width);
   const ystart = constrain(0, 0, img.height);
   const xend = constrain(img.width, 0, img.width);
@@ -70,9 +66,11 @@ function draw() {
       edgeImg.set(x, y, color(c));
     }
   }
+  
   edgeImg.updatePixels();
   image(edgeImg, 0, 0, imgHTML.width, imgHTML.height);
 }
+
 
 function convolution(x, y, matrix, matrixsize, img) {
   let rtotal = 0.0;

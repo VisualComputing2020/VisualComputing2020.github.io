@@ -56,12 +56,13 @@ function draw() {
       let r = pixels[loc];
       let b = pixels[loc];
       let g = pixels[loc];
+      let c;
 
       if(flag == 0){
-        let c = (r + b + g)/3;
+        c = (r + b + g)/3;
       }
       else if(flag == 1){
-        let c = ((r*0.216) + (b*0.0722) + (g*0.715));
+        c = ((r*0.216) + (b*0.0722) + (g*0.715));
       }
       edgeImg.set(x, y, color(c));
     }

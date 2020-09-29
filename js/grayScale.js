@@ -39,23 +39,18 @@ function draw() {
       console.log("otro");
   }
 
-  print(flag);
-
   const xstart = constrain(0, 0, img.width);
   const ystart = constrain(0, 0, img.height);
-  const xend = constrain(img.width, 0, img.width);
-  const yend = constrain(img.height, 0, img.height);
-  const matrixsize = 3;
 
   edgeImg = createImage(img.width, img.height);
   edgeImg.loadPixels();
   // Begin our loop for every pixel in the smaller image
   for (let x = xstart; x < img.width; x++) {
     for (let y = ystart; y < img.height; y++) {
-      let loc = (x + y * img.width) * 4;
-      let r = pixels[loc];
-      let b = pixels[loc];
-      let g = pixels[loc];
+      
+      let r = red(img.get(x,y));
+      let b = blue(img.get(x,y));
+      let g = green(img.get(x,y));
       let c;
 
       if(flag == 0){

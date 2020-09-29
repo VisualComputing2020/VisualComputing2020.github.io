@@ -45,9 +45,10 @@ function draw() {
   const xstart = constrain(0, 0, img.width);
   const ystart = constrain(0, 0, img.height);
 
-  edgeImg = createImage(img.width, img.height);
- if(flag != 0){
-  edgeImg.loadPixels();
+  edgeImg_prom = createImage(img.width, img.height);
+  edgeImg_luma = createImage(img.width, img.height);
+  edgeImg_prom.loadPixels();
+  edgeImg_luma.loadPixels();
   // Begin our loop for every pixel in the smaller image
   for (let x = xstart; x < img.width; x++) {
     for (let y = ystart; y < img.height; y++) {
@@ -55,20 +56,22 @@ function draw() {
       let r = red(img.get(x,y));
       let b = blue(img.get(x,y));
       let g = green(img.get(x,y));
-      let c;
-
-      
-      if(flag == 1){
-        c = (r + b + g)/3;
-      }
-      else if(flag == 2){
-        c = ((r*0.216) + (b*0.0722) + (g*0.715));
-      }
-      edgeImg.set(x, y, color(c));
+      let prom_c, luma_c;
+      prom_c = (r + b + g)/3;
+      edgeImg_prom.set(x, y, color(prom_c));
+      luma_c = ((r*0.216) + (b*0.0722) + (g*0.715));
+      edgeImg_luma.set(x, y, color(luma_c));
     }
   }
-  edgeImg.updatePixels();
-  image(edgeImg, 0, 0, imgHTML.width, imgHTML.height);
- }
-  else image(img, 0, 0, imgHTML.width, imgHTML.height);
+  edgeImg_prom.updatePixels();
+  edgeImg_luma.updatePixels();
+  if(flag == 0){
+    image(img, 0, 0, imgHTML.width, imgHTML.height);
+  }
+  else if(flag == 1){
+    image(edgeImg_prom, 0, 0, imgHTML.width, imgHTML.height);
+  }
+  else if(flag == 2){
+    image(edgeImg_luma, 0, 0, imgHTML.width, imgHTML.height);
+  }
 }

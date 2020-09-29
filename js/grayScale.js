@@ -10,7 +10,7 @@ function preload() {
 function setup() {
 
   var imagen = createCanvas(imgHTML.width, imgHTML.height);
-  imagen.parent('grayScaleContainer');
+  imagen.parent('_imagen');
   img.loadPixels();
 
   // pixelDensity(1) for not scaling pixel density to display density

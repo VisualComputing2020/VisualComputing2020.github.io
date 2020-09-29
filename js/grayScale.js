@@ -4,7 +4,7 @@ var imgHTML = document.getElementById('imgGrayScale');
 var flag = 0;
 
 function preload() {
-  img = loadImage('assets/otro_gatito.jpeg');
+  img = loadImage('assets/otro_gatito.jpg');
 }
 
 function setup() {

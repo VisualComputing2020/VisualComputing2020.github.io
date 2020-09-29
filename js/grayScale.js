@@ -27,22 +27,26 @@ function draw() {
   console.log(filter);
 
   switch (filter) {
-    case 'Promedio': 
+    case 'Normal': 
       flag = 0;
+      console.log("Normal");
+      break;
+    case 'Promedio': 
+      flag = 1;
       console.log("Promedio");
       break;
     case 'Luma':
-      flag = 1;
+      flag = 2;
       console.log("Luma");
       break;
     default:
       console.log("otro");
   }
-
   const xstart = constrain(0, 0, img.width);
   const ystart = constrain(0, 0, img.height);
 
   edgeImg = createImage(img.width, img.height);
+ if(flag != 0){
   edgeImg.loadPixels();
   // Begin our loop for every pixel in the smaller image
   for (let x = xstart; x < img.width; x++) {
@@ -53,48 +57,18 @@ function draw() {
       let g = green(img.get(x,y));
       let c;
 
-      if(flag == 0){
+      
+      if(flag == 1){
         c = (r + b + g)/3;
       }
-      else if(flag == 1){
+      else if(flag == 2){
         c = ((r*0.216) + (b*0.0722) + (g*0.715));
       }
       edgeImg.set(x, y, color(c));
     }
   }
-  
   edgeImg.updatePixels();
   image(edgeImg, 0, 0, imgHTML.width, imgHTML.height);
-}
-
-
-function convolution(x, y, matrix, matrixsize, img) {
-  let rtotal = 0.0;
-  let gtotal = 0.0;
-  let btotal = 0.0;
-  const offset = Math.floor(matrixsize / 2);
-  for (let i = 0; i < matrixsize; i++) {
-    for (let j = 0; j < matrixsize; j++) {
-
-      // What pixel are we testing
-      const xloc = (x + i - offset);
-      const yloc = (y + j - offset);
-      let loc = (xloc + img.width * yloc) * 4;
-
-      // Make sure we haven't walked off our image, we could do better here
-      loc = constrain(loc, 0, img.pixels.length - 1);
-      // Calculate the convolution
-      // retrieve RGB values
-      rtotal += (img.pixels[loc]) * matrix[i][j];
-      gtotal += (img.pixels[loc + 1]) * matrix[i][j];
-      btotal += (img.pixels[loc + 2]) * matrix[i][j];
-    }
-  }
-  // Make sure RGB is within range
-  rtotal = constrain(rtotal, 0, 255);
-  gtotal = constrain(gtotal, 0, 255);
-  btotal = constrain(btotal, 0, 255);
-
-  // Return the resulting color
-  return color(rtotal, gtotal, btotal);
+ }
+  else image(img, 0, 0, imgHTML.width, imgHTML.height);
 }

@@ -44,16 +44,31 @@
                     </p>
                 </div>
             </div>
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <div class="form-row ">
+                        <div class="form-group col-md">
+                            <select class="form-control" id="grayScalefilter">
+                                <option>Average</option>
+                                <option>Luma</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="btnGrayScaleFilter" style="margin-bottom: 30px">Aplicar</button>
+                </div>
+            </div>
         </div>
     </section>
 
 
     
-    <!-- Container canva -->
-    <div class="container">
-        <div class="row">
-            <div class="mx-auto" id="nombreCanvaParent">
+    <div id='grayScaleContainer' class="container-fluid" style="margin-top: 10px">
+        <div class="row ">
+            <div class="mx-auto col-md-6">
+                <img id="imgGrayScale" src="assets/arbol.jpeg" class="img-fluid" alt="Responsive image">
             </div>
+            <div class="mx-auto" id="_imagen"></div>
+            <div class="mx-auto" id="_custom"></div>
         </div>
     </div>
 
@@ -75,7 +90,7 @@
 
 
     <!--SCRIPT P5-->
-    <script src='js\nombrePrograma.js'></script>
+    <script src='js\grayScale.js'></script>
 
 
     <!-- Bootstrap core JS-->
@@ -85,6 +100,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
-</body>
+</body> 
 
 </html>

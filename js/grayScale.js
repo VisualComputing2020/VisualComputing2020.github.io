@@ -27,7 +27,7 @@ function draw() {
   console.log(filter);
 
   switch (filter) {
-    case 'Promedio':
+    case 'Promedio': 
       flag = 0;
       console.log("Promedio");
       break;
@@ -53,9 +53,9 @@ function draw() {
   for (let x = xstart; x < img.width; x++) {
     for (let y = ystart; y < img.height; y++) {
       let loc = (x + y * img.width) * 4;
-      let r = red(pixels[loc]);
-      let b = blue(pixels[loc]);
-      let g = green(pixels[loc]);
+      let r = pixels[loc];
+      let b = pixels[loc];
+      let g = pixels[loc];
 
       if(flag == 0){
         let c = (r + b + g)/3;

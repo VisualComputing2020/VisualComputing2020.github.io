@@ -1,4 +1,4 @@
-let img, edgeImg_prom = createImage(img.width, img.height), edgeImg_luma = createImage(img.width, img.height);
+let img, edgeImg_prom, edgeImg_luma;
 let w = 80;
 var imgHTML = document.getElementById('imgGrayScale');
 var flag = 0;
@@ -6,6 +6,8 @@ var list = []
 
 function preload() {
   img = loadImage('assets/otro_gatito.jpeg');
+  edgeImg_prom = createImage(img.width, img.height)
+  edgeImg_luma = createImage(img.width, img.height)
   edgeImg_prom.loadPixels();
   edgeImg_luma.loadPixels();
   grayScale();

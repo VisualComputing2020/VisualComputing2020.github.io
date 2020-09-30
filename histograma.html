@@ -115,7 +115,7 @@ function preload() {
   
   const xstart = constrain(0, 0, img.width);
   const ystart = constrain(0, 0, img.height);
-  
+
   // Begin our loop for every pixel in the smaller image
   for (let x = xstart; x < img.width; x++) {
     for (let y = ystart; y < img.height; y++) {
@@ -135,6 +135,7 @@ function preload() {
       cont = cont + 1;
     }
   }
+  console.log(gray_scale);
 }
 ;
 

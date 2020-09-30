@@ -100,6 +100,7 @@ function draw() {
       edgeImg.set(x, y, color(c));
     }
   }
+  console.log(pixels)
   edgeImg.updatePixels();
   image(edgeImg, 0, 0, imgHTML.width, imgHTML.height);
 }

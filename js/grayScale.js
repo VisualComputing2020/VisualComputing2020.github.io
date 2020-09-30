@@ -6,6 +6,9 @@ var list = []
 
 function preload() {
   img = loadImage('assets/otro_gatito.jpeg');
+  list[0] = grayScale(0);
+  list[1] = grayScale(1);
+  list[2] = grayScale(2);
 }
 
 function setup() {
@@ -13,9 +16,6 @@ function setup() {
   var imagen = createCanvas(imgHTML.width, imgHTML.height);
   imagen.parent('_imagen');
   img.loadPixels();
-  list[0] = grayScale(0);
-  list[1] = grayScale(1);
-  list[2] = grayScale(2);
 
   // pixelDensity(1) for not scaling pixel density to display density
   // for more information, check the reference of pixelDensity()

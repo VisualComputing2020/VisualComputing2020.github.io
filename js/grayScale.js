@@ -2,6 +2,7 @@ let img;
 let w = 80;
 var imgHTML = document.getElementById('imgGrayScale');
 var flag = 0;
+var list = []
 
 function preload() {
   img = loadImage('assets/otro_gatito.jpeg');
@@ -12,6 +13,9 @@ function setup() {
   var imagen = createCanvas(imgHTML.width, imgHTML.height);
   imagen.parent('_imagen');
   img.loadPixels();
+  list[0] = grayScale(0);
+  list[1] = grayScale(1);
+  list[2] = grayScale(2);
 
   // pixelDensity(1) for not scaling pixel density to display density
   // for more information, check the reference of pixelDensity()
@@ -29,19 +33,27 @@ function draw() {
   switch (filter) {
     case 'Normal': 
       flag = 0;
+      image(list[0], 0, 0, imgHTML.width, imgHTML.height);
       console.log("Normal");
       break;
     case 'Promedio': 
       flag = 1;
+      image(list[1], 0, 0, imgHTML.width, imgHTML.height);
       console.log("Promedio");
       break;
     case 'Luma':
       flag = 2;
+      image(list[2], 0, 0, imgHTML.width, imgHTML.height);
       console.log("Luma");
       break;
     default:
       console.log("otro");
   }
+  
+}
+
+function grayScale(value){
+  
   const xstart = constrain(0, 0, img.width);
   const ystart = constrain(0, 0, img.height);
 
@@ -65,13 +77,13 @@ function draw() {
   }
   edgeImg_prom.updatePixels();
   edgeImg_luma.updatePixels();
-  if(flag == 0){
-    image(img, 0, 0, imgHTML.width, imgHTML.height);
+  if(value == 0){
+    return img;
   }
-  else if(flag == 1){
-    image(edgeImg_prom, 0, 0, imgHTML.width, imgHTML.height);
+  else if(value == 1){
+    return edgeImg_prom;
   }
-  else if(flag == 2){
-    image(edgeImg_luma, 0, 0, imgHTML.width, imgHTML.height);
+  else if(value == 2){
+    return edgeImg_luma;
   }
 }

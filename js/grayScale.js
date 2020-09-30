@@ -1,4 +1,4 @@
-let img, edgeImg_prom, edgeImg_luma;
+let img, edgeImg_prom = createImage(img.width, img.height), edgeImg_luma = createImage(img.width, img.height);
 let w = 80;
 var imgHTML = document.getElementById('imgGrayScale');
 var flag = 0;
@@ -58,8 +58,6 @@ function grayScale(){
   const xstart = constrain(0, 0, img.width);
   const ystart = constrain(0, 0, img.height);
 
-  edgeImg_prom = createImage(img.width, img.height);
-  edgeImg_luma = createImage(img.width, img.height);
   edgeImg_prom.loadPixels();
   edgeImg_luma.loadPixels();
   // Begin our loop for every pixel in the smaller image

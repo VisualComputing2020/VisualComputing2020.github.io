@@ -1,4 +1,4 @@
-let img;
+let img, edgeImg_prom, edgeImg_luma;
 let w = 80;
 var imgHTML = document.getElementById('imgGrayScale');
 var flag = 0;
@@ -31,20 +31,22 @@ function draw() {
   switch (filter) {
     case 'Normal': 
       flag = 0;
+      image(img, 0, 0, imgHTML.width, imgHTML.height);
       console.log("Normal");
       break;
     case 'Promedio': 
       flag = 1;
+      image(edgeImg_prom, 0, 0, imgHTML.width, imgHTML.height);
       console.log("Promedio");
       break;
     case 'Luma':
       flag = 2;
+      image(edgeImg_luma, 0, 0, imgHTML.width, imgHTML.height);
       console.log("Luma");
       break;
     default:
       console.log("otro");
   }
-  image(list[flag], 0, 0, imgHTML.width, imgHTML.height);
 }
 
 function grayScale(){
@@ -72,8 +74,4 @@ function grayScale(){
   }
   edgeImg_prom.updatePixels();
   edgeImg_luma.updatePixels();
-  list[0] = img;
-  list[1] = edgeImg_prom;
-  list[2] = edgeImg_luma;
-
 }

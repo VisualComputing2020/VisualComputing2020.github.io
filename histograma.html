@@ -109,7 +109,7 @@ for (i = 0; i < 256; i++) {
 }
 
 function preload() {
-  img = loadImage('assets/gato_peque.jpeg');
+  img = loadImage('assets/bruno.jpeg');
 }
 ;
 
@@ -124,7 +124,9 @@ function draw(){
         }
     }
     new_gray_scale[num]=cont;
+    
   }
+  console.log(new_gray_scale)
 
 }
 
@@ -136,8 +138,8 @@ function grayScale(){
   let grey_array = [];
   // Begin our loop for every pixel in the smaller image
   let cont = 0
-  for (let x = xstart; x < img.width; x++) {
-    for (let y = ystart; y < img.height; y++) {
+  for (let x = xstart; x < img.width; x=x+2) {
+    for (let y = ystart; y < img.height; y=y+2) {
 
       let r = red(img.get(x,y));
       let b = blue(img.get(x,y));

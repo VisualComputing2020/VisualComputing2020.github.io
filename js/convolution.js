@@ -14,8 +14,7 @@ var matrix = [[0.0625, 0.125, 0.0625],
 
 function preload() {
   img = loadImage('assets/flor.jpg');
-  console.log(img.width);
-  console.log(img.height);
+
 }
 
 function setup() {

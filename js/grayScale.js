@@ -6,7 +6,11 @@ var list = []
 
 function preload() {
   img = loadImage('assets/otro_gatito.jpeg');
+  edgeImg_prom.loadPixels();
+  edgeImg_luma.loadPixels();
   grayScale();
+  edgeImg_prom.updatePixels();
+  edgeImg_luma.updatePixels();
 }
 
 function setup() {

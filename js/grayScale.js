@@ -6,9 +6,7 @@ var list = []
 
 function preload() {
   img = loadImage('assets/otro_gatito.jpeg');
-  list[0] = grayScale(0);
-  list[1] = grayScale(1);
-  list[2] = grayScale(2);
+  grayScale();
 }
 
 function setup() {
@@ -33,26 +31,23 @@ function draw() {
   switch (filter) {
     case 'Normal': 
       flag = 0;
-      image(list[0], 0, 0, imgHTML.width, imgHTML.height);
       console.log("Normal");
       break;
     case 'Promedio': 
       flag = 1;
-      image(list[1], 0, 0, imgHTML.width, imgHTML.height);
       console.log("Promedio");
       break;
     case 'Luma':
       flag = 2;
-      image(list[2], 0, 0, imgHTML.width, imgHTML.height);
       console.log("Luma");
       break;
     default:
       console.log("otro");
   }
-  
+  image(list[flag], 0, 0, imgHTML.width, imgHTML.height);
 }
 
-function grayScale(value){
+function grayScale(){
   
   const xstart = constrain(0, 0, img.width);
   const ystart = constrain(0, 0, img.height);
@@ -77,13 +72,8 @@ function grayScale(value){
   }
   edgeImg_prom.updatePixels();
   edgeImg_luma.updatePixels();
-  if(value == 0){
-    return img;
-  }
-  else if(value == 1){
-    return edgeImg_prom;
-  }
-  else if(value == 2){
-    return edgeImg_luma;
-  }
+  list[0] = img;
+  list[1] = edgeImg_prom;
+  list[2] = edgeImg_luma;
+
 }

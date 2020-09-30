@@ -139,7 +139,7 @@ function grayScale(){
   // Begin our loop for every pixel in the smaller image
   let cont = 0
   for (let x = xstart; x < img.width; x=x+2) {
-    for (let y = ystart; y < img.height; y=y+2) {
+    for (let y = ystart; y < img.height; y++) {
 
       let r = red(img.get(x,y));
       let b = blue(img.get(x,y));

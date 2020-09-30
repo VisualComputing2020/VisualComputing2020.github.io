@@ -42,7 +42,9 @@
                 <div class="col-lg-8 mx-auto">
                     <h2 class="text-white mb-4">Histograma de imagen</h2>
                     <p class="text-white-50">
-                        Muestra del histograma de color de una fotografía.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet et dolor officia dignissimos
+                        recusandae enim corporis, optio neque eaque suscipit, minima illum sint ullam, quibusdam quidem
+                        soluta. Magni, dolorem vitae.
                         <a class="text-white mx-2"
                             href="https://github.com/VisualComputing2020/VisualComputing2020.github.io/blob/master/js/convolution.js"><i
                                 class="fab fa-github"></i>
@@ -59,10 +61,10 @@
 
     <div class="imgWrapper4">
         <div class="imgResponsiva">
-            <img src="assets/gatito.jpg"/>
+            <img src="assets/bruno.jpeg"/>
         </div>
         <div class="imgResponsiva">
-            <img id="imgH" src="assets/gatito.jpg"/>
+            <img id="imgH" src="assets/bruno.jpeg"/>
         </div>
     </div>
 
@@ -96,12 +98,57 @@
 </body>
 
 <script>
+let img;
+var new_gray_scale = [];
+var gray_scale= [];
 var ctx = document.getElementById('Histograma').getContext('2d');
 
-var data_ = []
+var data_ = [];
 for (i = 0; i < 256; i++) {
   data_.push(i);
 }
+
+function preload() {
+  img = loadImage('assets/bruno.jpeg');
+  console.log(img.width);
+  console.log(img.height);
+
+  // Begin our loop for every pixel in the smaller image
+  for (let x = 0; x < img.width; x++) {
+    for (let y = 0; y < img.height; y++) {
+      let cont = 0;
+      
+
+      // retrieve the RGBA values from c and update pixels()
+      //let loc = (x + y * img.width) * 4;
+
+      let r = red(img.get(x,y));
+      let b = blue(img.get(x,y));
+      let g = green(img.get(x,y));
+
+      let a = (r + b + g)/3;
+      gray_scale[cont] = a;
+
+      cont = cont + 1;
+    }
+  }
+}
+;
+
+function draw(){
+
+    for(let num=0;num<256;num++){
+    let cont = 0;
+    for(let i=0;i<gray_scale.length;i++){
+        if (gray_scale[i] == num){
+            cont = cont + 1;
+        }
+    }
+    new_gray_scale[num]=cont;
+  }
+
+}
+
 
 var myChart = new Chart(ctx, {
     backgroundColor: "transparent",
@@ -110,7 +157,7 @@ var myChart = new Chart(ctx, {
         labels: data_,
         datasets: [{
             label: 'Histograma',
-            data: data_,
+            data: new_gray_scale,
             backgroundColor: 'rgb(100, 100, 100)',
         }]
     },
@@ -124,6 +171,7 @@ var myChart = new Chart(ctx, {
         }
     }
 });
+
 myChart.render();
 </script>
 

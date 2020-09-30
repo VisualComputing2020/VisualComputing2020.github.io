@@ -72,7 +72,6 @@ function draw() {
   }
 
 
-
   // We're only going to process a portion of the image
   // so let's set the whole image as the background first
 
@@ -100,7 +99,7 @@ function draw() {
       edgeImg.set(x, y, color(c));
     }
   }
-  console.log(pixels)
+
   edgeImg.updatePixels();
   image(edgeImg, 0, 0, imgHTML.width, imgHTML.height);
 }

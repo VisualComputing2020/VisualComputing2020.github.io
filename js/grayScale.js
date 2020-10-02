@@ -9,7 +9,6 @@ var lienzo;
 
 function setup() {
   img = loadImage('assets/otro_gatito.jpeg');
-  lienzo = create
   var imagen = createCanvas(imgHTML.width, imgHTML.height);
   imagen.parent('_imagen');
   img.loadPixels();

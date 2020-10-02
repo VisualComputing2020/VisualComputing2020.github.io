@@ -3,18 +3,13 @@ let w = 80;
 var imgHTML = document.getElementById('imgGrayScale');
 var flag = 0;
 var list = []
+var lienzo;
 
-function preload() {
-  img = loadImage('assets/otro_gatito.jpeg');
-  //edgeImg_prom = createImage(img.width, img.height)
-  //edgeImg_luma = createImage(img.width, img.height)
-  //edgeImg_prom.loadPixels();
-  //edgeImg_luma.loadPixels();
-  //grayScale();
-}
+
 
 function setup() {
-
+  img = loadImage('assets/otro_gatito.jpeg');
+  lienzo = create
   var imagen = createCanvas(imgHTML.width, imgHTML.height);
   imagen.parent('_imagen');
   img.loadPixels();
@@ -65,8 +60,8 @@ function grayScale(value){
   edgeImg_prom.loadPixels();
   edgeImg_luma.loadPixels();
   // Begin our loop for every pixel in the smaller image
-  for (let x = xstart; x < img.width; x++) {
-    for (let y = ystart; y < img.height; y++) {
+  for (let x = xstart; x < img.width; x= x+2) {
+    for (let y = ystart; y < img.height; y=y+2) {
       
       let r = red(img.get(x,y));
       let b = blue(img.get(x,y));

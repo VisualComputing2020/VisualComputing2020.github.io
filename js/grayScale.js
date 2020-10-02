@@ -59,7 +59,7 @@ function grayScale(value){
   edgeImg_prom.loadPixels();
   edgeImg_luma.loadPixels();
   // Begin our loop for every pixel in the smaller image
-  for (let x = xstart; x < img.width; x= x+2) {
+  for (let x = xstart; x < img.width; x++) {
     for (let y = ystart; y < img.height; y=y+2) {
       
       let r = red(img.get(x,y));

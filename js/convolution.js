@@ -21,6 +21,8 @@ function setup() {
 
   var blur = createCanvas(imgHTML.width, imgHTML.height);
   blur.parent('blur');
+  var custom_imagen = createCanvas(imgHTML.width, imgHTML.height);
+  custom_imagen.parent('_custom');
   img.loadPixels();
 
   // pixelDensity(1) for not scaling pixel density to display density

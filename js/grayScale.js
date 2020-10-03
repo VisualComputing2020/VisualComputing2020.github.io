@@ -16,9 +16,6 @@ function setup() {
   // pixelDensity(1) for not scaling pixel density to display density
   // for more information, check the reference of pixelDensity()
   pixelDensity(1);
-  p = grayScale(1);
-  l = grayScale(2);
-  noLoop();
   var a = select("#btnGrayScaleFilter");
   a.mousePressed(draw);
 }
@@ -36,12 +33,12 @@ function draw() {
       break;
     case 'Promedio': 
       flag = 1;
-      image(p, 0, 0, imgHTML.width, imgHTML.height);
+      image(grayScale(1), 0, 0, imgHTML.width, imgHTML.height);
       console.log("Promedio");
       break;
     case 'Luma':
       flag = 2;
-      image(l, 0, 0, imgHTML.width, imgHTML.height);
+      image(grayScale(2), 0, 0, imgHTML.width, imgHTML.height);
       console.log("Luma");
       break;
     default:

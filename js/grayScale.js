@@ -30,19 +30,19 @@ function draw() {
       flag = 0;
       image(img, 0, 0, imgHTML.width, imgHTML.height);
       console.log("Normal");
-      noloop();
+      noLoop();
       break;
     case 'Promedio': 
       flag = 1;
       image(grayScale(1), 0, 0, imgHTML.width, imgHTML.height);
       console.log("Promedio");
-      noloop();
+      noLoop();
       break;
     case 'Luma':
       flag = 2;
       image(grayScale(2), 0, 0, imgHTML.width, imgHTML.height);
       console.log("Luma");
-      noloop();
+      noLoop();
       break;
     default:
       console.log("No válido");

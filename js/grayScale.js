@@ -5,7 +5,7 @@ var flag = 0;
 let images = [];
 
 function preload() {
-  img = loadImage('assets/otro_gatito.jpeg');
+  img = loadImage('assets/gato_sol.jpeg');
 }
 
 function setup() {

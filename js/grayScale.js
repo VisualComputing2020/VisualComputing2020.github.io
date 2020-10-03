@@ -3,7 +3,7 @@ let w = 80;
 var imgHTML = document.getElementById('imgGrayScale');
 var flag = 0;
 var list = []
-var lienzo;
+var lightness;
 
 
 

@@ -3,7 +3,7 @@ let w = 80;
 var imgHTML = document.getElementById('imgGrayScale');
 var flag = 0;
 var list = []
-var lightness;
+var brillo;
 
 
 
@@ -84,17 +84,17 @@ function grayScale(value){
 			
 			if (value===1){
 				let I=(r+g+b)/3; // Promedio de los tres componentes
-				lightness = I;
+				brillo = I;
 				title = 'RGB';
 			} else if (value===2){ // Promedio ponderado de RGB con corrección gamma (Luma)
 				let Y601= 0.2989*r + 0.5870*g + 0.1140*b; // SDTV
-				lightness = Y601;
+				brillo = Y601;
 				title = 'LUMA ';
 			} 
 						            
-			edgeImg_prom.pixels[index+0] = lightness;
-			edgeImg_prom.pixels[index+1] = lightness;
-			edgeImg_prom.pixels[index+2] = lightness;
+			edgeImg_prom.pixels[index+0] = brillo;
+			edgeImg_prom.pixels[index+1] = brillo;
+			edgeImg_prom.pixels[index+2] = brillo;
 			edgeImg_prom.pixels[index+3] = a;
 			
 			if (value===0){ // Imagen original

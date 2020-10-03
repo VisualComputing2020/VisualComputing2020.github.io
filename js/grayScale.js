@@ -74,8 +74,8 @@ function grayScale(value){
     }
   }*/
 
-  for (let y = 0; y < edgeImg_prom.height; y++) {
-		for (let x = 0; x < edgeImg_prom.width; x++){ 
+  for (let y = 0; y < img.height; y++) {
+		for (let x = 0; x < img.width; x++){ 
 			let index = (x+y*width)*4; // Posicion del pixel
             let r=img.pixels[index+0]; // Componente Red
             let g=img.pixels[index+1]; // Componente Green
@@ -92,16 +92,16 @@ function grayScale(value){
 				title = 'LUMA ';
 			} 
 						            
-			pixels[index+0] = lightness;
-			pixels[index+1] = lightness;
-			pixels[index+2] = lightness;
-			pixels[index+3] = a;
+			edgeImg_prom.pixels[index+0] = lightness;
+			edgeImg_prom.pixels[index+1] = lightness;
+			edgeImg_prom.pixels[index+2] = lightness;
+			edgeImg_prom.pixels[index+3] = a;
 			
 			if (value===0){ // Imagen original
-				pixels[index+0] = r;
-				pixels[index+1] = g;
-				pixels[index+2] = b;
-				pixels[index+3] = a;
+				edgeImg_prom.pixels[index+0] = r;
+				edgeImg_prom.pixels[index+1] = g;
+				edgeImg_prom.pixels[index+2] = b;
+				edgeImg_prom.pixels[index+3] = a;
 				title = 'IMAGEN ORIGINAL';
 			}
 		}

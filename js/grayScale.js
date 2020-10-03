@@ -6,19 +6,14 @@ let images = [];
 
 function preload() {
   img = loadImage('assets/otro_gatito.jpeg');
-  //edgeImg_prom = createImage(img.width, img.height)
-  //edgeImg_luma = createImage(img.width, img.height)
-  //edgeImg_prom.loadPixels();
-  //edgeImg_luma.loadPixels();
-  //grayScale();
 }
 
 function setup() {
 
   var imagen = createCanvas(imgHTML.width, imgHTML.height);
   imagen.parent('_imagen');
-  var imagen = createCanvas(imgHTML.width*2, imgHTML.height);
-  imagen.parent('grayScaleContainer');
+  var custom_imagen = createCanvas(imgHTML.width, imgHTML.height);
+  custom_imagen.parent('_custom');
   img.loadPixels();
 
   // pixelDensity(1) for not scaling pixel density to display density

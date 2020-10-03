@@ -60,8 +60,8 @@ function grayScale(value){
   const xstart = constrain(0, 0, img.width);
   const ystart = constrain(0, 0, img.height);
 
-  edgeImg_prom = createGraphics(img.width, img.height)
-  edgeImg_luma = createGraphics(img.width, img.height)
+  edgeImg_prom = createGraphics(img.width, img.height, P2D )
+  edgeImg_luma = createGraphics(img.width, img.height, P2D )
   edgeImg_prom.loadPixels();
   edgeImg_luma.loadPixels();
   // Begin our loop for every pixel in the smaller image

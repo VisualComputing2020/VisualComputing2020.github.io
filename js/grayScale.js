@@ -17,6 +17,8 @@ function setup() {
 
   var imagen = createCanvas(imgHTML.width, imgHTML.height);
   imagen.parent('_imagen');
+  var imagen = createCanvas(imgHTML.width*2, imgHTML.height);
+  imagen.parent('grayScaleContainer');
   img.loadPixels();
 
   // pixelDensity(1) for not scaling pixel density to display density
@@ -30,7 +32,7 @@ function setup() {
 }
 
 function draw() {
-
+  
   var filter = document.getElementById('grayScalefilter').value;
   console.log(filter);
 
@@ -60,8 +62,8 @@ function grayScale(value){
   const xstart = constrain(0, 0, img.width);
   const ystart = constrain(0, 0, img.height);
 
-  edgeImg_prom = createGraphics(img.width, img.height, WEBGL)
-  edgeImg_luma = createGraphics(img.width, img.height, WEBGL)
+  edgeImg_prom = createGraphics(img.width, img.height, P2D)
+  edgeImg_luma = createGraphics(img.width, img.height, P2D)
   edgeImg_prom.loadPixels();
   edgeImg_luma.loadPixels();
   // Begin our loop for every pixel in the smaller image

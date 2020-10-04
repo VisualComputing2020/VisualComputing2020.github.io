@@ -3,9 +3,10 @@ let frate = []
 let count = 0;
 let beginning = true;
 let avg = 0;
+let flag = 1;
 
 function setup() {
-  createCanvas(1100, 400);
+  createCanvas(1100, 800);
   // especificar múltiples formatos para diferentes navegadores
   fingers = createVideo(['assets/gato-bailando-wiggle.mp4', 'assets/gato-bailando-wiggle.webm']);
   fingers.hide(); // por defecto el video aparece en un elemento dom separado.
@@ -14,8 +15,13 @@ function setup() {
 
 function draw() {
   background(150);
-  image(fingers, 550, 10); // dibuja una segunda copia en el lienzo.
-  filter(GRAY);
+  if(flag == 0){  
+    image(fingers, 550, 10); // dibuja una segunda copia en el lienzo.
+    filter(GRAY);
+  } 
+  else if(flag == 1){  
+    image(convolution(fingers), 550, 10); // dibuja una segunda copia en el lienzo.
+  } 
   image(fingers, 10, 10); // dibuja el cuadro del video en el lienzo.
   let fr = frameRate();
   frate[count] = fr;

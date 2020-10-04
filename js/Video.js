@@ -1,6 +1,7 @@
 let fingers;
 let frate = []
 let count = 0;
+let beginning = true;
 
 function setup() {
   createCanvas(1100, 400);
@@ -22,4 +23,11 @@ function draw() {
 
 function mousePressed() {
   fingers.loop(); // configurar el video para empezar a reproducirse en bucle
+  if (beginning === true) {
+    fingers.play().time(0);
+    beginning = false;
+  } else {
+    fingers.stop();
+    beginning = true;
+  }
 }

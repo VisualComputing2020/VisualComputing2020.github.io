@@ -36,12 +36,24 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                    <h2 class="text-white mb-4">Titulo</h2>
+                    <h2 class="text-white mb-4">Escala de grises</h2>
                     <p class="text-white-50">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Pariatur alias odit suscipit
-                        dignissimos ipsam vitae illum maxime illo nam, minima labore qui eligendi? Suscipit nemo
-                        repellat cumque sint fuga facere.
+                        Ejercicios con Videos    
                     </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <div class="form-row ">
+                        <div class="form-group col-md">
+                            <select class="form-control" id="videoFilter">
+                                <option>Video normal</option>
+                                <option>Escala de grises</option>
+                                <option>Máscara de Convolución</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="btnVideo" style="margin-bottom: 30px">Aplicar</button>
                 </div>
             </div>
         </div>
@@ -49,11 +61,13 @@
 
 
     
-    <!-- Container canva -->
-    <div class="container">
-        <div class="row">
-            <div class="mx-auto" id="nombreCanvaParent">
+    <div id='VideoContainer' class="VideoContainer" style="margin-top: 10px">
+        <div class="row ">
+            <div class="mx-auto col-md-6">
+                <video id="VideoId" src="assets/gato-bailando-wiggle.mp4" class="video" >
             </div>
+            <div class="mx-auto" id="_video"></div>
+            <div class="mx-auto" id="_customVideo"></div>
         </div>
     </div>
 
@@ -63,8 +77,11 @@
 
         <div class="container">
             <div class="social d-flex justify-content-center">
-                <a class="mx-2" href="https://github.com/VisualComputing2020/VisualComputing2020.github.io"><i
-                        class="fab fa-github"></i></a>
+                <a class="mx-2" 
+                    href="https://github.com/VisualComputing2020/VisualComputing2020.github.io/blob/master/js/Video.js"><i
+                        class="fab fa-github"></i>
+                    Código fuente
+                </a>
             </div>
         </div>
     </section>
@@ -75,7 +92,7 @@
 
 
     <!--SCRIPT P5-->
-    <script src='js\nombrePrograma.js'></script>
+    <script src='js\grayScale.js'></script>
 
 
     <!-- Bootstrap core JS-->
@@ -85,6 +102,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
-</body>
+</body> 
 
 </html>

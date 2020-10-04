@@ -23,6 +23,7 @@ function draw() {
   count++;
   var a = select("#btnVideo");
   a.mousePressed(_action);
+  noLoop();
 }
 
 function _action() {
@@ -41,5 +42,4 @@ function _action() {
     console.log(avg);
     avg = 0;
   }
-  noLoop();
 }

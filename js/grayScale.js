@@ -2,35 +2,31 @@ let img, edgeImg_prom, edgeImg_luma, p, l;
 let w = 80;
 var imgHTML = document.getElementById('imgGrayScale');
 var flag = 0;
-var list = []
+let images = [];
 
 function preload() {
-  img = loadImage('assets/otro_gatito.jpeg');
-  //edgeImg_prom = createImage(img.width, img.height)
-  //edgeImg_luma = createImage(img.width, img.height)
-  //edgeImg_prom.loadPixels();
-  //edgeImg_luma.loadPixels();
-  //grayScale();
+  img = loadImage('assets/gato_sol.jpeg');
 }
 
 function setup() {
 
   var imagen = createCanvas(imgHTML.width, imgHTML.height);
   imagen.parent('_imagen');
+  var custom_imagen = createCanvas(imgHTML.width, imgHTML.height);
+  custom_imagen.parent('_custom');
   img.loadPixels();
 
   // pixelDensity(1) for not scaling pixel density to display density
   // for more information, check the reference of pixelDensity()
   pixelDensity(1);
-  p = grayScale(1);
-  l = grayScale(2);
+  grayScale();
   noLoop();
   var a = select("#btnGrayScaleFilter");
   a.mousePressed(draw);
 }
 
 function draw() {
-
+  
   var filter = document.getElementById('grayScalefilter').value;
   console.log(filter);
 
@@ -42,12 +38,12 @@ function draw() {
       break;
     case 'Promedio': 
       flag = 1;
-      image(p, 0, 0, imgHTML.width, imgHTML.height);
+      image(images[1], 0, 0, imgHTML.width, imgHTML.height);
       console.log("Promedio");
       break;
     case 'Luma':
       flag = 2;
-      image(l, 0, 0, imgHTML.width, imgHTML.height);
+      image(images[2], 0, 0, imgHTML.width, imgHTML.height);
       console.log("Luma");
       break;
     default:
@@ -55,13 +51,13 @@ function draw() {
   }
 }
 
-function grayScale(value){
+function grayScale(){
   
   const xstart = constrain(0, 0, img.width);
   const ystart = constrain(0, 0, img.height);
 
-  edgeImg_prom = createImage(img.width, img.height)
-  edgeImg_luma = createImage(img.width, img.height)
+  edgeImg_prom = createGraphics(img.width, img.height, P2D)
+  edgeImg_luma = createGraphics(img.width, img.height, P2D)
   edgeImg_prom.loadPixels();
   edgeImg_luma.loadPixels();
   // Begin our loop for every pixel in the smaller image
@@ -81,10 +77,7 @@ function grayScale(value){
   edgeImg_prom.updatePixels();
   edgeImg_luma.updatePixels();
 
-  if(value == 1){
-    return edgeImg_prom;
-  }
-  if(value == 2){
-    return edgeImg_luma;
-  }
+  images[1] = edgeImg_prom;
+  images[2] = edgeImg_luma;
+
 }

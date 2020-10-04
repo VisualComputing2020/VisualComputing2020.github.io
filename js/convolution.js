@@ -13,7 +13,7 @@ var matrix = [[0.0625, 0.125, 0.0625],
 [0.0625, 0.125, 0.0625]];
 
 function preload() {
-  img = loadImage('assets/flor.jpg');
+  img = loadImage('assets/gatito.jpeg');
 
 }
 
@@ -21,6 +21,8 @@ function setup() {
 
   var blur = createCanvas(imgHTML.width, imgHTML.height);
   blur.parent('blur');
+  var custom_imagen = createCanvas(imgHTML.width, imgHTML.height);
+  custom_imagen.parent('custom');
   img.loadPixels();
 
   // pixelDensity(1) for not scaling pixel density to display density

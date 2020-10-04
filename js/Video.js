@@ -36,5 +36,6 @@ function mousePressed() {
     }
     avg /= frate.length;
     console.log(avg);
+    avg = 0;
   }
 }

@@ -22,10 +22,10 @@ function draw() {
   frate[count] = fr;
   count++;
   var a = select("#btnVideo");
-  a.mousePressed(butonPressed());
+  a.mousePressed(_action);
 }
 
-function butonPressed() {
+function _action() {
   fingers.loop(); // configurar el video para empezar a reproducirse en bucle
   if (beginning === true) {
       count = 0;

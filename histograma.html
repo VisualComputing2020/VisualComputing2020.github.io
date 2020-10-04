@@ -69,7 +69,7 @@
     </div>
 
     <div id="HImage">
-        <canvas id="Histograma"></canvas>
+        <canvas id="Histograma" width="1200" height="600"></canvas>
     </div>
 
     <section class="contact-section bg-black">
@@ -98,7 +98,7 @@
 </body>
 
 <script>
-let img, edgeImg_prom;
+let img, edgeImg_prom, data_image;
 var new_gray_scale = [];
 var gray= [];
 var ctx = document.getElementById('Histograma').getContext('2d');
@@ -110,6 +110,9 @@ for (i = 0; i < 256; i++) {
 
 function preload() {
   img = loadImage('assets/gato3.jpeg');
+
+  var canvas = document.getElementById( 'Histograma' ),
+      context = canvas.getContext( '2d' ),
 }
 ;
 
@@ -126,7 +129,6 @@ function draw(){
     new_gray_scale[num]=cont;
     
   }
-  console.log(new_gray_scale)
 
 }
 

@@ -13,6 +13,7 @@ function setup() {
 }
 
 function draw() {
+  fingers.stop();
   background(250);
   image(fingers, 600, 20); // dibuja una segunda copia en el lienzo.
   filter(GRAY);
@@ -22,7 +23,6 @@ function draw() {
   count++;
   var a = select("#btnVideo");
   a.mousePressed(butonPressed());
-  noLoop();
 }
 
 function butonPressed() {
@@ -41,4 +41,5 @@ function butonPressed() {
     console.log(avg);
     avg = 0;
   }
+  noLoop();
 }

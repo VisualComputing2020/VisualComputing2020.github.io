@@ -1,7 +1,7 @@
 let fingers;
 
 function setup() {
-  createCanvas(710, 400);
+  createCanvas(1100, 400);
   // especificar múltiples formatos para diferentes navegadores
   fingers = createVideo(['assets/gato-bailando-wiggle.mp4', 'assets/gato-bailando-wiggle.webm']);
   fingers.hide(); // por defecto el video aparece en un elemento dom separado.
@@ -12,7 +12,7 @@ function draw() {
   background(150);
   image(fingers, 10, 10); // dibuja el cuadro del video en el lienzo.
   filter(GRAY);
-  image(fingers, 150, 150); // dibuja una segunda copia en el lienzo.
+  image(fingers, 500, 10); // dibuja una segunda copia en el lienzo.
 }
 
 function mousePressed() {

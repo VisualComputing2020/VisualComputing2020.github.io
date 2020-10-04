@@ -3,7 +3,7 @@ let frate = []
 let count = 0;
 let beginning = true;
 let avg = 0;
-let flag = 1;
+let flag = 0;
 
 function setup() {
   createCanvas(1100, 800);

@@ -1,4 +1,6 @@
 let fingers;
+let frate = []
+let count = 0;
 
 function setup() {
   createCanvas(1100, 400);
@@ -11,9 +13,11 @@ function setup() {
 
 function draw() {
   background(150);
-  image(fingers, 10, 10); // dibuja el cuadro del video en el lienzo.
   image(fingers, 550, 10); // dibuja una segunda copia en el lienzo.
   filter(GRAY);
+  image(fingers, 10, 10); // dibuja el cuadro del video en el lienzo.
+  let fr = frameRate();
+  console.log(fr);
 }
 
 function mousePressed() {

@@ -38,8 +38,8 @@ function _action() {
     }
     avg /= frate.length;
     console.log(avg);
-    textSize(15, 50, 200);
-    text(avg);
+    textSize(15);
+    text(avg, 50, 200);
     avg = 0;
   }
 }

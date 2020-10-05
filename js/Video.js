@@ -13,7 +13,6 @@ function setup() {
 }
 
 function draw() {
-  fingers.stop();
   background(250);
   image(fingers, 600, 20); // dibuja una segunda copia en el lienzo.
   filter(GRAY);

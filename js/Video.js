@@ -27,10 +27,10 @@ function draw() {
 function _action() {
   fingers.loop(); // configurar el video para empezar a reproducirse en bucle
   if (beginning === true) {
+    loop();
     count = 0;
     fingers.play().time(0);
     beginning = false;
-    loop();
   } else {
     beginning = true;
     fingers.stop();

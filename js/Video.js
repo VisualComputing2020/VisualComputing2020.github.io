@@ -3,7 +3,6 @@ let frate = []
 let count = 0;
 let beginning = true;
 let avg = 0;
-let _fingers;
 
 function setup() {
   let cnv = createCanvas(1200, 400, P2D);
@@ -24,7 +23,7 @@ function draw() {
   frate[count] = fr;
   count++;
 
-  textSize(40);
+  textSize(30);
   text(avg, 100, 400);
 }
 

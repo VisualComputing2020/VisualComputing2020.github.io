@@ -38,7 +38,7 @@ function _action() {
     avg /= frate.length;
     console.log(avg);
     textSize(40);
-    text(avg, 500, 0);
+    text(avg, 0, 0);
     avg = 0;
   }
 }

@@ -10,14 +10,13 @@ function setup() {
   cnv.parent('VideoContainer');
   fingers = createVideo(['assets/gato-bailando-wiggle.mp4', 'assets/gato-bailando-wiggle.webm']);
   //fingers.hide(); 
-  frameRate(1000);
   var a = select("#btnVideo");
   a.mousePressed(_action);
 }
 
 function draw() {
   background(250);
-  image(fingers, 600, 20); // dibuja una segunda copia en el lienzo.
+  image(fingers, 650, 20); // dibuja una segunda copia en el lienzo.
   filter(GRAY);
   image(fingers, 50, 20); // dibuja el cuadro del video en el lienzo.
   let fr = frameRate();
@@ -39,6 +38,10 @@ function _action() {
     }
     avg /= frate.length;
     console.log(avg);
+    textFont(font);
+    textSize(fontsize);
+    textAlign(CENTER, CENTER);
+    text(avg);
     avg = 0;
   }
 }

@@ -38,8 +38,7 @@ function _action() {
     }
     avg /= frate.length;
     console.log(avg);
-    textFont(font);
-    textSize(fontsize);
+    textSize(15);
     textAlign(CENTER, CENTER);
     text(avg);
     avg = 0;

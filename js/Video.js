@@ -40,7 +40,7 @@ function _action() {
     console.log(avg);
     let canv = createCanvas(1200, 20, P2D);
     textSize(40);
-    text(avg, 500, 200);
+    text(avg, 500, 0);
     avg = 0;
   }
 }

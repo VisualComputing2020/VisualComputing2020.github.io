@@ -19,6 +19,7 @@
     <link href="../../css/styles.css" rel="stylesheet" />
 
     <!-- P5 -->
+    <script src="../p5.js" type="text/javascript"></script>
     <script src="../p5.min.js" type="text/javascript"></script>
     <script src="../p5.dom.js" type="text/javascript"></script>
     <script src="convolution-shader.js"></script>
@@ -38,7 +39,11 @@
                 <div class="col-lg-8 mx-auto">
                     <h2 class="text-white mb-4">Máscaras de convolución</h2>
                     <p class="text-white-50">
-                        Aplicación de distintas matrices de convolución a una fotografía.
+                        Aplicación de distintas matrices de convolución a una fotografía por medio de shaders.<br/>
+                        Oprime E para aplicar el filtro Emboss. <br/>
+                        Oprime S para aplicar el filtro Sharpen. <br/>
+                        Oprime O para aplicar el filtro Outline. <br/>
+                        Oprime B para aplicar el filtro Blur. <br/>
                         <a class="text-white mx-2"
                             href="https://github.com/VisualComputing2020/VisualComputing2020.github.io/blob/master/js/convolution.js"><i
                                 class="fab fa-github"></i>
@@ -48,22 +53,7 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-6 mx-auto">
-                    <div class="form-row ">
-                        <div class="form-group col-md">
-                            <select class="form-control" id="filter">
-                                <option>Blur</option>
-                                <option>Emboss</option>
-                                <option>Outline</option>
-                                <option>Sharpen</option>
-                                <option>Identity</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary" id="btnFilter" style="margin-bottom: 30px">Aplicar</button>
-                </div>
-            </div>
+            
         </div>
     </section>
 

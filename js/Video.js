@@ -18,9 +18,14 @@ function draw() {
   image(fingers, 650, 20); 
   filter(GRAY);
   image(fingers, 50, 20); 
+  
+  
   let fr = frameRate();
   frate[count] = fr;
   count++;
+
+  textSize(40);
+  text(avg, 100, 400);
 }
 
 function _action() {
@@ -36,9 +41,9 @@ function _action() {
         avg+=frate[i];
     }
     avg /= frate.length;
+    
     console.log(avg);
-    textSize(40);
-    text(avg, 0, 0);
-    avg = 0;
+    
+    draw();
   }
 }

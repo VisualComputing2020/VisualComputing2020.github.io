@@ -104,10 +104,3 @@ img.onload = function() {
     var threshold = otsu(histogram, w*h);
     binarize(threshold, ctx, w, h);
 };
-
-var input = document.getElementById('input');
-input.addEventListener('change', handleFiles);
-
-function handleFiles(e) {
-    img.src = URL.createObjectURL(e.target.files[0]);
-};

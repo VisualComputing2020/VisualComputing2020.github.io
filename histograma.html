@@ -72,6 +72,8 @@
         <canvas id="Histograma"></canvas>
     </div>
 
+    <canvas id="viewport"></canvas>
+
     <section class="contact-section bg-black">
 
         <div class="container">
@@ -94,11 +96,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
+    <script src="js/otsu.js"></script>
+
 
 </body>
 
 <script>
-let img, edgeImg_prom, data_image;
+let edgeImg_prom, data_image;
 var new_gray_scale = [];
 var gray= [];
 var ctx = document.getElementById('Histograma').getContext('2d');
@@ -123,10 +127,8 @@ function draw(){
             cont = cont + 1;
         }
     }
-    new_gray_scale[num]=cont;
-    
+    new_gray_scale[num]=cont; 
   }
-
 }
 
 function grayScale(){
@@ -149,11 +151,8 @@ function grayScale(){
       cont = cont + 1;
     }
   }
-
     return grey_array;
-  
 } 
-
 
 var myChart = new Chart(ctx, {
     backgroundColor: "transparent",
@@ -196,8 +195,8 @@ myChart.render();
 
 #imgH{
     -webkit-filter: grayscale(1);
-    filter: gray; 
-    filter: grayscale(1);
+    filter: rgb(0, 0, 0); 
+    filter: grayscale(3);
     text-align: right;
 }
 

@@ -22,6 +22,7 @@ function draw() {
   count++;
   var a = select("#btnVideo");
   a.mousePressed(_action);
+  noLoop();
 }
 
 function _action() {
@@ -31,8 +32,8 @@ function _action() {
     fingers.play().time(0);
     beginning = false;
   } else {
-    fingers.stop();
     beginning = true;
+    fingers.stop();
     for(let i = 0; i < frate.length; i++){
         avg+=frate[i];
     }

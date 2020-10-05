@@ -10,6 +10,7 @@ function setup() {
   cnv.parent('VideoContainer');
   fingers = createVideo(['assets/gato-bailando-wiggle.mp4', 'assets/gato-bailando-wiggle.webm']);
   //fingers.hide(); 
+  frameRate(100);
   var a = select("#btnVideo");
   a.mousePressed(_action);
 }

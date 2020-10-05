@@ -105,7 +105,8 @@ img.onload = function() {
 };
 
 var input = document.getElementById('input');
-input.addEventListener('change', handleFiles);
+input.addEventListener('change', "assets/gato3.jpeg");
+
 
 function handleFiles(e) {
     img.src = URL.createObjectURL(e.target.files[0]);

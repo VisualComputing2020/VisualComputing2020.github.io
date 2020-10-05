@@ -59,21 +59,11 @@
     
     <!-- Image & Histogram -->
 
-    <div class="imgWrapper4">
-        <div class="imgResponsiva">
-            <img id="input" src="assets/gato3.jpeg"/>
-        </div>
-        <div class="imgResponsiva">
-            <img id="imgH" src="assets/gato3.jpeg"/>
-        </div>
-    </div>
-
-    <div id="HImage">
-        <canvas id="Histograma"></canvas>
-    </div>
-
     <input type="file" id="input"/>
     <canvas id="viewport"></canvas>
+    <script src="js/otsu.js"></script>
+    <script src='js\Chart.js'></script>
+    <canvas id="Histograma"></canvas>
 
     <section class="contact-section bg-black">
 
@@ -97,88 +87,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
-    <script src="js/otsu.js"></script>
 
 
 </body>
-
-<script>
-let edgeImg_prom, data_image;
-var new_gray_scale = [];
-var gray= [];
-var ctx = document.getElementById('Histograma').getContext('2d');
-
-var data_ = [];
-for (i = 0; i < 256; i++) {
-  data_.push(i);
-}
-
-function preload() {
-  img = loadImage('assets/gato3.jpeg');
-}
-;
-
-function draw(){
-    gray = grayScale();
-
-    for(let num=0;num<256;num++){
-    let cont = 0;
-    for(let i=0;i<gray.length;i++){
-        if (gray[i] == num){
-            cont = cont + 1;
-        }
-    }
-    new_gray_scale[num]=cont; 
-  }
-}
-
-function grayScale(){
-  
-  const xstart = constrain(0, 0, img.width);
-  const ystart = constrain(0, 0, img.height);
-
-  let grey_array = [];
-  // Begin our loop for every pixel in the smaller image
-  let cont = 0
-  for (let x = xstart; x < img.width; x=x+2) {
-    for (let y = ystart; y < img.height; y++) {
-
-      let r = red(img.get(x,y));
-      let b = blue(img.get(x,y));
-      let g = green(img.get(x,y));
-      let prom_c;
-      prom_c = (r + b + g)/3;
-      grey_array[cont] = prom_c;
-      cont = cont + 1;
-    }
-  }
-    return grey_array;
-} 
-
-var myChart = new Chart(ctx, {
-    backgroundColor: "transparent",
-    type: 'bar',
-    data: {
-        labels: data_,
-        datasets: [{
-            label: 'Histograma',
-            data: new_gray_scale,
-            backgroundColor: 'rgb(255, 0, 0)',
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-});
-
-myChart.render();
-</script>
 
 </html>
 

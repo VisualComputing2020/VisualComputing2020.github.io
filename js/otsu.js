@@ -8,23 +8,6 @@ var ctx = canvas.getContext('2d');
 
 var img = new Image;
 
-function toGrayscale(context, w, h) {
-    var imageData = context.getImageData(0, 0, w, h);
-    var data = imageData.data;
-    
-    for(var i = 0; i < data.length; i += 4) {
-        var brightness = RED_INTENCITY_COEF * data[i] + GREEN_INTENCITY_COEF * data[i + 1] + BLUE_INTENCITY_COEF * data[i + 2];
-        // red
-        data[i] = brightness;
-        // green
-        data[i + 1] = brightness;
-        // blue
-        data[i + 2] = brightness;
-    }
-    
-    // overwrite original image
-    context.putImageData(imageData, 0, 0);
-};
 
 function hist(context, w, h) {
     var imageData = context.getImageData(0, 0, w, h);
@@ -38,7 +21,6 @@ function hist(context, w, h) {
         brightness256Val = Math.floor(brightness);
         histArray[brightness256Val] += 1;
     }
-    
     return histArray;
 };
 
@@ -76,36 +58,48 @@ function otsu(histogram, total) {
     }
     return ( threshold1 + threshold2 ) / 2.0;
 };
-function binarize(threshold, context, w, h) {
-    var imageData = context.getImageData(0, 0, w, h);
-    var data = imageData.data;
-    var val;
-    
-    for(var i = 0; i < data.length; i += 4) {
-        var brightness = RED_INTENCITY_COEF * data[i] + GREEN_INTENCITY_COEF * data[i + 1] + BLUE_INTENCITY_COEF * data[i + 2];
-        val = ((brightness > threshold) ? 255 : 0);
-        data[i] = val;
-        data[i + 1] = val;
-        data[i + 2] = val;
-    }
-    
-    // overwrite original image
-    context.putImageData(imageData, 0, 0);
-}
 
 img.onload = function() {
+    console.log("imagen cargada")
     var w = img.width, h = img.height;
+    var data_ = [];
+        for (i = 0; i < 256; i++) {
+        data_.push(i);
+    } 
     canvas.height = h;     
     canvas.width = w;       
     ctx.drawImage(img, 0, 0);
     //toGrayscale(ctx, w, h);
     var histogram = hist(ctx, w, h);
-    var threshold = otsu(histogram, w*h);
-    binarize(threshold, ctx, w, h);
+    console.log(histogram)
+    //var threshold = otsu(histogram, w*h);
+    var ctxn = document.getElementById('Histograma').getContext('2d');
+    var myChart = new Chart(ctxn, {
+        backgroundColor: "transparent",
+        type: 'bar',
+        data: {
+            labels: data_,
+            datasets: [{
+                label: 'Histograma',
+                data: histogram,
+                backgroundColor: 'rgb(255, 0, 0)',
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+    myChart.render();
 };
 
 var input = document.getElementById('input');
-input.addEventListener('change', "assets/gato3.jpeg");
+input.addEventListener('change', handleFiles);
 
 
 function handleFiles(e) {

@@ -9,7 +9,6 @@ function setup() {
   let cnv = createCanvas(1200, 400, P2D);
   cnv.parent('VideoContainer');
   fingers = createVideo(['assets/gato-bailando-wiggle.mp4', 'assets/gato-bailando-wiggle.webm']);
-  fingers.hide(); 
   var a = select("#btnVideo");
   a.mousePressed(_action);
 }
@@ -25,7 +24,7 @@ function draw() {
 }
 
 function _action() {
-  fingers.loop(); 
+  //fingers.loop(); 
   if (beginning === true) {
     count = 0;
     fingers.play().time(0);

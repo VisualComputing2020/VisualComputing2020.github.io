@@ -13,7 +13,7 @@ var matrix = [[0.0625, 0.125, 0.0625],
 [0.0625, 0.125, 0.0625]];
 
 function preload() {
-  img = loadImage('assets/gatito.jpeg');
+  img = loadImage('assets/gato.jpg');
 
 }
 

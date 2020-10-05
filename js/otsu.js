@@ -59,6 +59,23 @@ function otsu(histogram, total) {
     return ( threshold1 + threshold2 ) / 2.0;
 };
 
+function binarize(threshold, context, w, h) {
+    var imageData = context.getImageData(0, 0, w, h);
+    var data = imageData.data;
+    var val;
+    
+    for(var i = 0; i < data.length; i += 4) {
+        var brightness = RED_INTENCITY_COEF * data[i] + GREEN_INTENCITY_COEF * data[i + 1] + BLUE_INTENCITY_COEF * data[i + 2];
+        val = ((brightness > threshold) ? 255 : 0);
+        data[i] = val;
+        data[i + 1] = val;
+        data[i + 2] = val;
+    }
+    
+    // overwrite original image
+    context.putImageData(imageData, 0, 0);
+}
+
 img.onload = function() {
     console.log("imagen cargada")
     var w = img.width, h = img.height;
@@ -72,7 +89,8 @@ img.onload = function() {
     //toGrayscale(ctx, w, h);
     var histogram = hist(ctx, w, h);
     console.log(histogram)
-    //var threshold = otsu(histogram, w*h);
+    var threshold = otsu(histogram, w*h);
+    binarize(threshold, ctx, w, h);
     var ctxn = document.getElementById('Histograma').getContext('2d');
     var myChart = new Chart(ctxn, {
         backgroundColor: "transparent",

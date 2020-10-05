@@ -10,6 +10,8 @@ function setup() {
   cnv.parent('VideoContainer');
   fingers = createVideo(['assets/gato-bailando-wiggle.mp4', 'assets/gato-bailando-wiggle.webm']);
   //fingers.hide(); 
+  var a = select("#btnVideo");
+  a.mousePressed(_action);
 }
 
 function draw() {
@@ -20,14 +22,11 @@ function draw() {
   let fr = frameRate();
   frate[count] = fr;
   count++;
-  var a = select("#btnVideo");
-  a.mousePressed(_action);
 }
 
 function _action() {
   fingers.loop(); // configurar el video para empezar a reproducirse en bucle
   if (beginning === true) {
-    loop();
     count = 0;
     fingers.play().time(0);
     beginning = false;
@@ -40,6 +39,5 @@ function _action() {
     avg /= frate.length;
     console.log(avg);
     avg = 0;
-    noLoop();
   }
 }

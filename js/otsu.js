@@ -77,18 +77,17 @@ function binarize(threshold, context, w, h) {
 }
 
 img.onload = function() {
-    console.log("imagen cargada")
-    var w = img.width, h = img.height;
+    console.log("imagen cargada");
     var data_ = [];
         for (i = 0; i < 256; i++) {
         data_.push(i);
     } 
+    var w = img.width, h = img.height;
     canvas.height = h;     
     canvas.width = w;       
     ctx.drawImage(img, 0, 0);
     //toGrayscale(ctx, w, h);
     var histogram = hist(ctx, w, h);
-    console.log(histogram)
     var threshold = otsu(histogram, w*h);
     binarize(threshold, ctx, w, h);
     var ctxn = document.getElementById('Histograma').getContext('2d');

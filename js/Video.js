@@ -16,16 +16,16 @@ function setup() {
 
 function draw() {
   background(250);
-  image(fingers, 650, 20); // dibuja una segunda copia en el lienzo.
+  image(fingers, 650, 20); 
   filter(GRAY);
-  image(fingers, 50, 20); // dibuja el cuadro del video en el lienzo.
+  image(fingers, 50, 20); 
   let fr = frameRate();
   frate[count] = fr;
   count++;
 }
 
 function _action() {
-  fingers.loop(); // configurar el video para empezar a reproducirse en bucle
+  fingers.loop(); 
   if (beginning === true) {
     count = 0;
     fingers.play().time(0);
@@ -38,8 +38,8 @@ function _action() {
     }
     avg /= frate.length;
     console.log(avg);
-    textSize(15);
-    text(avg, 50, 200);
+    textSize(40);
+    text(avg, 500, 200);
     avg = 0;
   }
 }

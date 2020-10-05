@@ -7,7 +7,6 @@ var canvas = document.getElementById('viewport');
 var ctx = canvas.getContext('2d');
 
 var img = new Image;
-img.src = "gato3.jpeg";
 
 function toGrayscale(context, w, h) {
     var imageData = context.getImageData(0, 0, w, h);
@@ -103,4 +102,11 @@ img.onload = function() {
     var histogram = hist(ctx, w, h);
     var threshold = otsu(histogram, w*h);
     binarize(threshold, ctx, w, h);
+};
+
+var input = document.getElementById('input');
+input.addEventListener('change', handleFiles);
+
+function handleFiles(e) {
+    img.src = URL.createObjectURL(e.target.files[0]);
 };

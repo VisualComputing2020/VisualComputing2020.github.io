@@ -5,28 +5,26 @@
 // the shader variable
 let imgShader;
 
-// the camera variable
+
 let img;
+
+
 
 function preload(){
   // load the shader
   imgShader = loadShader('effect.vert', 'effect.frag');
+  
 }
 
 function setup() {
+  let imgHTML = document.getElementById('imgConvolution');
+  img = loadImage('assets/gatito.jpeg');
   // shaders require WEBGL mode to work
-  var canva = createCanvas(windowWidth, windowHeight, WEBGL);
-  canva.parent('canva-shader');
+  var canva = createCanvas(imgHTML.width, imgHTML.height, WEBGL);
+  canva.parent('canva');
   noStroke();
 
-  // initialize the webcam at the window size
-  /*cam = createCapture(VIDEO);
-  cam.size(windowWidth, windowHeight);
 
-  // hide the html element that createCapture adds to the screen
-  cam.hide();
-*/
-  img = loadImage('assets/gatito.jpeg');
 }
 
 function draw() {  

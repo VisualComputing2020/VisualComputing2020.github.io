@@ -7,7 +7,7 @@ let avg = 0;
 function setup() {
   let cnv = createCanvas(1200, 400, P2D);
   cnv.parent('VideoContainer');
-  fingers = createVideo(['assets/gato-bailando-wiggle.mp4', 'assets/gato-bailando-wiggle.webm']);
+  fingers = createVideo(['../assets/gato-bailando-wiggle.mp4', '../assets/gato-bailando-wiggle.webm']);
   var a = select("#btnVideo");
   a.mousePressed(_action);
 }

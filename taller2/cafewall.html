@@ -56,8 +56,15 @@
     
     <!-- Image & Histogram -->
 
-    <script src='js/cafe-wall.js'></script>
-    <div class="container">
+    <script>
+        $(window).mousemove(function(e) {
+        var posX = e.clientX / $(window).width() * 100;
+    
+        $('.rowll:nth-child(2n)').css('background-position', posX);
+        });
+    </script>
+    
+    <div class="scene">
         <div class="cafe-wall">
         <div class="rowll"></div>
         <div class="rowll"></div>

@@ -1,5 +1,5 @@
 function setup() {
-  var myCanvas = createCanvas(1020, 527);
+  var myCanvas = createCanvas(1420, 527);
   myCanvas.parent("cafe-wall");
   background("#808080");
   mouseMoved = function () {
@@ -20,7 +20,7 @@ function dibujarFila(fila) {
     var posicionLadrillo = fila % 4;
     if (posicionLadrillo == 3) posicionLadrillo = 1;
     rect(
-      i * 59 - (((posicionLadrillo * mouseX) / 10) % 100) + 10,
+      i * 59 - (((posicionLadrillo * mouseX) / 10) % 100) + 200,
       posicionVertical,
       55,
       55

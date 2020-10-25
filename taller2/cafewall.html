@@ -41,7 +41,9 @@
                 <div class="col-lg-8 mx-auto">
                     <h2 class="text-white mb-4">Ilusión CafeWall.</h2>
                     <p class="text-white-50">
-                        Almacenamos las frecuencias de los diferentes valores de brillo de la imagen en escala de grises, tomando en cuenta que cada canal de color tiene 256 niveles de intensidad.
+                        La ilusión Café Wall, es una ilusión óptica-geométrica en la cual líneas
+                         paralelas que dividen filas con “ladrillos” blancos y negros que se alternan
+                          y hacen que las líneas paralelas parezcan inclinadas cuando no lo son
                         <a class="text-white mx-2"
                             href="https://github.com/VisualComputing2020/VisualComputing2020.github.io/blob/master/js/convolution.js"><i
                                 class="fab fa-github"></i>
@@ -55,15 +57,6 @@
     </section>
     
     <!-- Image & Histogram -->
-
-    <script>
-        $(window).mousemove(function(e) {
-        var posX = e.clientX / $(window).width() * 100;
-    
-        $('.rowll:nth-child(2n)').css('background-position', posX);
-        });
-    </script>
-    
     <div class="scene">
         <div class="cafe-wall">
         <div class="rowll"></div>
@@ -75,6 +68,8 @@
         <div class="rowll"></div>
         </div>
     </div>
+
+    <script src='js/cafe-wall.js'></script>
 
     <section class="contact-section bg-black">
 
@@ -118,8 +113,8 @@
     background-position: 20px 0; 
   }
   
-  /*
 
+/*
   Uncomment for 3d fun
   .cafe-wall {
     transform: translate3d(0,0,-20px) rotateX(80deg);

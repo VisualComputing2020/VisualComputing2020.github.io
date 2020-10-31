@@ -1,9 +1,10 @@
 let num=50, d=100, frames=120;
 let theta;
 
-void setup() 
+function setup() 
 {
-  size(540, 540, P2D);
+  var myCanvas = createCanvas(540, 540);
+  myCanvas.parent("circles");
   blendMode(SCREEN);
   stroke(255);
   noStroke();
@@ -11,7 +12,7 @@ void setup()
   //noFill();
 }
 
-void draw() 
+function draw() 
 {
   background(0);
   for (let j=0; j<3; j++) {
@@ -22,12 +23,12 @@ void draw()
         let angle = TWO_PI/num*i;
         let x = width/2 + j*5 + cos(angle)*d;
         let y = height/2 + sin(angle)*d;
-      pushMatrix();
+      push();
       translate(x, y);
       rotate(theta+angle);
       let d2=d*1.5;
       arc(0, 0, d2, d2, 0, radians(5));
-      popMatrix();
+      pop();
     }
   }
   theta += TWO_PI/frames;

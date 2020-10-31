@@ -3,7 +3,7 @@ let theta;
 
 function setup() 
 {
-  var myCanvas = createCanvas(540, 540);
+  var myCanvas = createCanvas(1200, 700);
   myCanvas.parent("circles");
   blendMode(SCREEN);
   stroke(255);
@@ -25,7 +25,7 @@ function draw()
         let y = height/2 + sin(angle)*d;
       push();
       translate(x, y);
-      rotate(theta+angle);
+      rotate(radians(angle));
       let d2=d*1.5;
       arc(0, 0, d2, d2, 0, radians(5));
       pop();

@@ -34,5 +34,5 @@ function draw() {
   arc(0, 0, 300, 300, PI, HALF_PI);
   pop();
 
-  ang += 0.007;
+  ang += 0.013;
 }

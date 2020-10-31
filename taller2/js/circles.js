@@ -1,9 +1,9 @@
-let num=50, d=100, frames=120;
-let theta;
+let num=50, d=150, frames=12;
+let theta, ang =0;
 
 function setup() 
 {
-  var myCanvas = createCanvas(1200, 700);
+  var myCanvas = createCanvas(1350, 650, WEBGL);
   myCanvas.parent("circles");
   blendMode(SCREEN);
   stroke(255);
@@ -24,13 +24,22 @@ function draw()
         let x = width/2 + j*5 + cos(angle)*d;
         let y = height/2 + sin(angle)*d;
       push();
-      translate(x, y);
-      rotate(radians(angle));
-      let d2=d*1.5;
+      translate(x-660, y-360);
+      
+      rotate(angle);
+      let d2=d*1.7;
+      rotateZ(radians(ang));
       arc(0, 0, d2, d2, 0, radians(5));
+      
+      noFill();
+      stroke(0);  
+      strokeWeight(20);
       pop();
+      
+      ang +=0.01;
     }
   }
-  theta += TWO_PI/frames;
+  theta += (PI+PI)/frames;
+  frames+=0.1
   //if (frameCount<=frames) saveFrame("image-###.gif");
 }

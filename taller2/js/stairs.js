@@ -12,7 +12,6 @@ function setup() {
 
 function draw() {
     background(255);
-
     setCamera(cam);
     orbitControl(1, 1, 0);
     fill('rgba(46,155,129,0.95)')

@@ -1,12 +1,10 @@
-// this two functions were promoted to be global
-// to make firefoxs jit happy - URGH
+
 function clamp(x, min, max) {
     if(x < min) return min;
     if(x > max) return max-1;
     return x;
 }
 
-// this is basically where the magic happens
 function drawLight(canvas, ctx, normals, textureData, shiny, specularity, lx, ly, lz) {
     var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
     var data = imgData.data;
@@ -15,32 +13,30 @@ function drawLight(canvas, ctx, normals, textureData, shiny, specularity, lx, ly
     var dx = 0, dy = 0, dz = 0;
     for(var y = 0; y < canvas.height; y++) {
         for(var x = 0; x < canvas.width; x++) {
-            // get surface normal
+            // superficie
             nx = normals[ni];
             ny = normals[ni+1];
             nz = normals[ni+2];
 
-            // make it a bit faster by only updateing the direction
-            // for every other pixel
+            // actualizar la función de cada pixel
             if(shiny > 0 || (ni&1) == 0){
-                // calculate the light direction vector
+                // se calcula el vector de dirección de luz
                 dx = lx - x;
                 dy = ly - y;
                 dz = lz;
 
-                // normalize it
+                // se normaliza el vector
                 magInv = 1.0/Math.sqrt(dx*dx + dy*dy + dz*dz);
                 dx *= magInv;
                 dy *= magInv;
                 dz *= magInv;
             }
 
-            // take the dot product of the direction and the normal
-            // to get the amount of specularity
+            // se obtiene la cantidad de especularidad con el vector normalizado y el producto punto
             var dot = dx*nx + dy*ny + dz*nz;
             var spec = Math.pow(dot, 20)*specularity;
             spec += Math.pow(dot, 400)*shiny;
-            // spec + ambient
+            // espectro + ambiente
             var intensity = spec + 0.5;
 
             for(var channel = 0; channel < 3; channel++) {
@@ -87,14 +83,14 @@ function normalmap(canvasId, texture, normalmap, specularity, shiny) {
     var textureData = null;
     var normalsImg = loadImage(normalmap, function() {
         var data = getDataFromImage(normalsImg).data;
-        // precalculate the normals
+        // se precalculan las normales
         for(var i = 0; i < canvas.height*canvas.width*4; i+=4) {
             var nx = data[i];
-            // flip the y value
+            // se cambia el valor de y
             var ny = 255-data[i+1];
             var nz = data[i+2];
 
-            // normalize
+            // se normaliza
             var magInv = 1.0/Math.sqrt(nx*nx + ny*ny + nz*nz);
             nx *= magInv;
             ny *= magInv;

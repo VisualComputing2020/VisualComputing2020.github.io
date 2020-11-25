@@ -1,3 +1,4 @@
+let angle = 0
 function setup() {
   var myCanvas = createCanvas(1349, 300, WEBGL);
   myCanvas.parent("ambientLight");
@@ -31,11 +32,11 @@ function draw() {
   // axis direction of light: 0, 0, -1
   spotLight(255, 255, 0, lightX, lightY, 100, 0, 0, -1);
 
-  // rotate on X axis
-  rotateX(-PI/4);
-  // rotate on Y axis
-  rotateY(PI/4);
+  rotateY(angle);
+  rotateX(angle*1.6);
+  rotateZ(angle*1.4);
+  angle += 0.002
+  box(110);
+  pop();
   
-  // place box on (0, 0, 0), size 100
-  box(120);
 }

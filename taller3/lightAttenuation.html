@@ -23,8 +23,6 @@
     <!-- P5 -->
     <script src='..\js\p5.js'></script>
 
-    <!-- Chart --> 
-    <script src='js\Chart.js'></script>
 </head>
 
 <body>
@@ -39,12 +37,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                    <h2 class="text-white mb-4">Ambient Light.</h2>
+                    <h2 class="text-white mb-4">Light Attenuation.</h2>
                     <p class="text-white-50">
-                        Se agrega luz de ambiente verde, la cual viene de la parte derecha. 
-                        Poder ver la forma 3D de la figura se agrega una luz directa amarilla en el mouse del usuario.
+                        La atenuación de una luz depende del tipo de luz y de la distancia entre la luz y la posición del vértice.
+                        A PointLight es una luz que se encuentra en un punto y dispara luz en todas las direcciones desde ese punto.
+
                         <a class="text-white mx-2"
-                            href="https://github.com/VisualComputing2020/VisualComputing2020.github.io/blob/master/js/convolution.js"><i
+                            href="https://github.com/VisualComputing2020/VisualComputing2020.github.io/blob/master/taller3/js/lightAttenuation.js" target="_blank"><i
                                 class="fab fa-github"></i>
                             Código fuente
                         </a>
@@ -58,7 +57,7 @@
     <!-- Image & Histogram -->
 
     <div class="sketch-averages" id="ambientLight"></div>
-    <script src='js/ambientLight.js'></script>
+    <script src='js/lightAttenuation.js'></script>
 
 
     <section class="contact-section bg-black">

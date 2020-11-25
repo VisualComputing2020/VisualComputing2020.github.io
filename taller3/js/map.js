@@ -56,7 +56,8 @@ function drawLight(canvas, ctx, normals, textureData, shiny, specularity, lx, ly
 
 function normalmap(canvasId, texture, normalmap, specularity, shiny) {
 
-    var canvas = document.getElementById(canvasId);
+    var myCanvas = createCanvas(windowWidth - 20, 400, WEBGL);
+    myCanvas.parent("mapContainer");
     if(canvas.getContext == undefined) {
         document.write('unsupported browser');
         return;

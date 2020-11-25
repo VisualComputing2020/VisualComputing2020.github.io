@@ -7,6 +7,8 @@ function setup() {
   
   function draw() {
 
+    ambientLight(0, 255/4, 0);
+
     directionalLight(90, 250, 40, -1, 0, 0);
 
     background(0);

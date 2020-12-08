@@ -44,7 +44,7 @@ function setup() {
 
 function draw() {
   background(0);
-  ambientLight(155);
+  ambientLight(120);
   ambientMaterial(0);
   pointLight(255, 255, 255, 0, 0, 0);
   noStroke();

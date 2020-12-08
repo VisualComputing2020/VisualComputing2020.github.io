@@ -1,12 +1,6 @@
-// Solar System in Processing - Part 3 (3D textures)
-// The Coding Train / Daniel Shiffman
-// https://thecodingtrain.com/CodingChallenges/009-solarsystemgenerator3d-texture.html
-// https://youtu.be/FGAwi7wpU8c
-// https://editor.p5js.org/codingtrain/sketches/SD8a6k6A
-
 class Planeta {
     constructor(r, d, o, img) {
-      this.v = p5.Vector.random3D();
+      this.v = createVector(0,0,1);
   
       this.radius = r;
       this.distance = d;
@@ -36,13 +30,16 @@ class Planeta {
         let r = this.radius / (level * 2);
         let d = random(this.radius + r, (this.radius + r) * 2);
         let o = random(-0.1, 0.1);
-        let index = int(random(0, textures.length));
-        this.planetas[i] = new Planeta(r, d, o, textures[index]);
-        if (level < 2) {
-          let num = int(random(0, 3));
-          this.planetas[i].spawnMoons(num, level + 1);
-        }
       }
+    }
+
+    addMoon(radio, distancia, orbita, textura){
+      this.planetas = [];
+      let d = this.radius + distancia;
+      let moon = new Planeta(radio, d, orbita, textura);
+      this.planetas[0] = moon;
+      let v2 = createVector(1, 0, 0);
+      let p = this.planetas[0].v.cross(v2);
     }
   
     show() {

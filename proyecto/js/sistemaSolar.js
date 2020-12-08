@@ -9,7 +9,7 @@ const texturas = [];
 // have to load the images in p5.js' preload() instead of in setup().
 function preload() {
   universo = loadImage('./js/data/universo.jpg')
-  solTexture = loadImage('./js/data/sol1.jpg');
+  solTexture = loadImage('./js/data/sol3.jpg');
   texturas[0] = loadImage('./js/data/mercurio.jpg');
   texturas[1] = loadImage('./js/data/venus.jpg');
   texturas[2] = loadImage('./js/data/tierra.jpg');
@@ -44,8 +44,10 @@ function setup() {
 
 function draw() {
   background(0);
-  ambientLight(255, 255, 255);
+  ambientLight(135);
+  ambientMaterial(0);
   pointLight(255, 255, 255, 0, 0, 0);
+  noStroke();
   
   sol.show();
   sol.orbit();

@@ -46,6 +46,7 @@ function draw() {
   background(0);
   ambientLight(255, 255, 255);
   pointLight(255, 255, 255, 0, 0, 0);
+  
   sol.show();
   sol.orbit();
   for (let i = 0; i < planetas.length; i++) {

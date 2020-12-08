@@ -4,7 +4,7 @@
 // https://youtu.be/FGAwi7wpU8c
 // https://editor.p5js.org/codingtrain/sketches/SD8a6k6A
 
-class Planet {
+class Planeta {
     constructor(r, d, o, img) {
       this.v = p5.Vector.random3D();
   
@@ -14,7 +14,7 @@ class Planet {
       this.angle = random(TWO_PI);
       this.orbitspeed = o;
   
-      this.planets = null;
+      this.planetas = null;
   
       // Since there is no direct equivalent of PShape in p5.js, we have
       // to save the texture for later use instead of creating a globe.
@@ -23,24 +23,24 @@ class Planet {
   
     orbit() {
       this.angle = this.angle + this.orbitspeed;
-      if (this.planets != null) {
-        for (let i = 0; i < this.planets.length; i++) {
-          this.planets[i].orbit();
+      if (this.planetas != null) {
+        for (let i = 0; i < this.planetas.length; i++) {
+          this.planetas[i].orbit();
         }
       }
     }
   
     spawnMoons(total, level) {
-      this.planets = [];
+      this.planetas = [];
       for (let i = 0; i < total; i++) {
         let r = this.radius / (level * 2);
         let d = random(this.radius + r, (this.radius + r) * 2);
         let o = random(-0.1, 0.1);
         let index = int(random(0, textures.length));
-        this.planets[i] = new Planet(r, d, o, textures[index]);
+        this.planetas[i] = new Planeta(r, d, o, textures[index]);
         if (level < 2) {
           let num = int(random(0, 3));
-          this.planets[i].spawnMoons(num, level + 1);
+          this.planetas[i].spawnMoons(num, level + 1);
         }
       }
     }
@@ -65,9 +65,9 @@ class Planet {
       texture(this.texture);
       sphere(this.radius);
       //ellipse(0, 0, this.radius * 2, this.radius * 2);
-      if (this.planets != null) {
-        for (let i = 0; i < this.planets.length; i++) {
-          this.planets[i].show();
+      if (this.planetas != null) {
+        for (let i = 0; i < this.planetas.length; i++) {
+          this.planetas[i].show();
         }
       }
       pop();

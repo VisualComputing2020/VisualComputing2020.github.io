@@ -21,12 +21,11 @@ function preload() {
   texturas[8] = loadImage('./js/data/pluton.jpg');
 }
 
-
 function setup() {
-  let canvas = createCanvas(600, 600, WEBGL);
+  let canvas = createCanvas(windowWidth, windowHeight*0.74, WEBGL);
+  canvas.parent('proyecto')
   // Disable the context menu on the canvas so the camera can use the right mouse button
   canvas.elt.oncontextmenu = () => false;
-
 
   cam = createEasyCam({ distance: 500 });
 
@@ -45,16 +44,15 @@ function setup() {
 
 function draw() {
   background(0);
-  ambientLight(10);
+  ambientLight(155);
   ambientMaterial(0);
   pointLight(255, 255, 255, 0, 0, 0);
   noStroke();
-
+  
   sol.show();
   sol.orbit();
   for (let i = 0; i < planetas.length; i++) {
     planetas[i].show();
     planetas[i].orbit();
   }
-  
 }

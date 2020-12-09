@@ -1,3 +1,4 @@
+
 class Planeta {
     constructor(r, d, o, img) {
       this.v = createVector(0,0,1);

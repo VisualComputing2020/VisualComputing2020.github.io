@@ -1,7 +1,8 @@
 let sol;
 let cam;
 let moon;
-let estadoCamara;
+let estadoCamara = 0;
+let delta = 10;
 
 const radioSol = 80;
 const planetas = [];
@@ -14,8 +15,8 @@ const distancias = [
   radioSol + 764,
   radioSol + 1490,
   radioSol + 1958,
-  radioSol + 2476,
-  radioSol + 2906
+  radioSol + 2176,
+  radioSol + 2306
 ]
 
 const radios = [2.4, 6, 6.3, 3.3, 69, 58, 25, 24, 1.18]
@@ -73,34 +74,27 @@ function setup() {
   planetas[4] = new Planeta(69, 80 + 764, 0.0013, texturas[4]);
   planetas[5] = new Planeta(58, 80 + 1490, 0.0006, texturas[5]);
   planetas[6] = new Planeta(25, 80 + 1958, 0.0007, texturas[6]);
-  planetas[7] = new Planeta(24, 80 + 2476, 0.0005, texturas[7]);
-  planetas[8] = new Planeta(1.8, 80 + 2906, 0.0004, texturas[8]);
+  planetas[7] = new Planeta(24, 80 + 2176, 0.0005, texturas[7]);
+  planetas[8] = new Planeta(1.8, 80 + 2306, 0.0004, texturas[8]);
 
   //Lunas
   planetas[2].addMoon(1.7, 3.8, 0.1, texturas[9]);
+  planetas[2].drawOrbit();
+  planetas[4].addMoon(random(0.1,1.2), random(3,4), random(-0.1,0.1), texturas[9]);
+  planetas[4].addMoon(random(0.1,1.2), random(3,4), random(-0.1,0.1), texturas[9]);
+  
+  planetas[5].addRings(0.5, 2, random(-0.1,0.1), texturas[9]);
   
 }
 
 function draw() {
   background(0);
   
-  // setCamera(cam);
   orbitControl();
-  // console.log(cameraPos);
-  // camera(500,500,cameraPos);
-
-  // camera.lookAt(0, 0, 0);
-  
-  // camera.lookAt(0, 0, 0);
-  // camera.setPosition(planetas[cameraPositionX].angle, cameraPositionY, cameraPositionZ);
-  // camera.pan(planetas[cameraPositionX].angle);
-
-
-
 
   ambientLight(120);
   texture(universo)
-  sphere(2000)
+  sphere(2450)
   // ambientMaterial(0);
   let z = 100;
   for (let i = 0; i < 2; i++) {
@@ -119,11 +113,12 @@ function draw() {
   }
   if(estadoCamara ==1){
     // console.log(planetas[cameraPositionZ], camera)
-    // camera.setPosition(cameraPositionX+ sin(frameCount * 0.01)*360, cameraPositionY,cameraPositionZ+ sin(frameCount * 0.01)*360);
-    // camera.setPosition(planetas[cameraPositionZ].angle, cameraPositionY, cameraPositionX);
-    camera.setPosition(cameraPositionX, cameraPositionY, planetas[cameraPositionZ].angle);
-    camera.move(planetas[cameraPositionZ].angle,0, planetas[cameraPositionZ].angle);
-  }
+    //camera.setPosition(cameraPositionX, cameraPositionY,cameraPositionZ+ sin(frameCount * 0.01)*360);
+    camera.setPosition(planetas[cameraPositionZ].angle, cameraPositionY, cameraPositionX);
+    //camera.setPosition(cameraPositionX, cameraPositionY, planetas[0].angle);
+    //camera.move(planetas[cameraPositionZ].angle,0, planetas[cameraPositionZ].angle);
+    //camera.move(delta, 0, delta);
+   }
 }
 
 
@@ -142,8 +137,9 @@ function renderPlanet(txture, rotSpeed, orbSpeed, planetRad, transX, transY, tra
 
 
 function keyTyped() {
-  estadoCamara = 1;
+  
   if (key === "h" || key === "H") {
+    estadoCamara = 1;
     cameraPositionZ = 0;
     cameraPositionX = distancias[0]+3;
     document.getElementById('cameraPosition').innerHTML = nombres[0] + ". Radio: " + radios[0] + " mil km - Distancia: " + distancias[0] + " millones km";

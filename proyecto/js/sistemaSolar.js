@@ -48,7 +48,7 @@ function preload() {
 }
 
 function setup() {
-  let canvas = createCanvas(windowWidth, windowHeight * 0.75, WEBGL);
+  let canvas = createCanvas(windowWidth-50, windowHeight * 0.75, WEBGL);
   canvas.parent('proyecto')
   // Disable the context menu on the canvas so the camera can use the right mouse button
   canvas.elt.oncontextmenu = () => false;
@@ -124,9 +124,6 @@ function draw() {
     camera.setPosition(cameraPositionX, cameraPositionY, planetas[cameraPositionZ].angle);
     camera.move(planetas[cameraPositionZ].angle,0, planetas[cameraPositionZ].angle);
   }
-
-  
-  //console.log(planetas[1]);
 }
 
 
